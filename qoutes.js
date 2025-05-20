@@ -22,14 +22,16 @@ async function allQuotes() {
 }
 allQuotes();
 
-async function searchValue() {
+async function searchValue(){
   const searchData = document.querySelector("#search").value.trim();
+  console.log(searchData)
   const searchResult = currantData.filter((quote) =>
     quote.quote.toLowerCase().includes(searchData.toLowerCase())
   );
   console.log(searchResult);
 
-  if (searchResult.length === 0) {
+  if (searchResult.length === 0 || searchResult === "") {
+    document.querySelector("#quots-contianer").innerHTML = "";
     const empty = document.querySelector("#empty");
     const noResult = document.createElement("h1");
     const message = document.createTextNode("No Result");
